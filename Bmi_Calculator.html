@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI CALCULATOR</title>
+</head>
+<body>
+    <h1>Check Your BMI</h1>
+    <h3>Enter Your weight and height below to check your BMI result</h3>
+    <br>
+    <h3>Put your weight in here (KG)</h3>
+    <input type="text" id="inp1" placeholder="weight (KG">
+
+    <h3>And your height in here (CM)</h3>
+    <input type="text" id="inp2" placeholder="height (CM)"><br>
+    <button onclick="Click()">Calculate BMI</button>
+    <p>Your BMI is: <span id="bmiResult"></span></p>
+    <p>You are categorized as: <span id="categoryResult"></span></p>
+    <h2 id="display"></h2>
+</body>
+</html>
+<script>
+    function Click() {
+        let weight = (document.getElementById("inp1").value);
+        let height = (document.getElementById("inp2").value) / 100; // Convert height to meters
+        let display = document.getElementById("display");
+
+        let BMI = weight / (height * height);
+        let op = "";
+
+        if (BMI <= 18.4) {
+            op = "Underweight";
+        } else if (BMI >= 18.5 && BMI <= 24.9) {
+            op = "Normal Weight";
+        } else if (BMI >= 25 && BMI <= 29.9) {
+            op = "Overweight";
+        } else {
+            op = "Obese";
+        }
+
+        document.getElementById("bmiResult").textContent = BMI.toFixed(2);
+        document.getElementById("categoryResult").textContent = op;
+        display.innerText = "Your BMI is " + BMI + " " + "Which means you are " + op;
+    }
+</script>
