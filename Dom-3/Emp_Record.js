@@ -43,10 +43,11 @@ MyForm.addEventListener('submit',function(e)
         let role = document.createElement("td")
 
         if(ele.exp > 5){
-            // role.innerText = "Senior"
-            role.style.backgroundColor = "red"
+            role.innerText = "Senior"
         }else if(ele.exp > 2 && ele.exp <=5){
             role.innerText = "Junior"
+        }else if (ele.exp <= 1){
+            role.innerText="Fresher"
         }
 
 
