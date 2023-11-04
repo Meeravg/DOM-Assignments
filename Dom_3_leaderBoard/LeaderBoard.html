@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- <link rel="Styling" href="./Leader_Board.css"> -->
+  <title>Leaderboard</title>
+  <style>
+
+    #Score {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+  }
+  .box {
+    text-align: center;
+    font-weight: bold;
+  }
+  #minBox,
+  #maxBox {
+    font-size: 18px;
+    padding: 5px;
+    margin: 5px;
+    top: 50%;
+    border: 2px solid black;
+    width: 120px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #minBox{
+    background-color: red;
+  }
+  #maxBox {
+    background-color: green;
+  }
+  .inpbox {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+  #scoreBox {
+    width: 250px;
+    height: 80px;
+    font-size: 24px;
+    text-align: center;
+    background-color: dimgrey;
+    color: black;
+    font-weight: bold;
+  }
+  #btn {
+    margin-top: 30px;
+  }
+  #btn div {
+  display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    gap: 20px;
+  }
+  .number-button {
+    width: 70px;
+    height: 70px;
+    font-weight: bold;
+    font-size: 24px;
+  }
+  #color1{
+    background-color: darkgreen;
+  }
+  #orange{
+    background-color:orangered;
+  }
+  #pink{
+    background-color: purple;
+  }
+  #enterButton{
+      width: 255px;
+      height: 60px;
+      margin-top: 10px;
+      background-color: black;
+      color: wheat;
+      font-weight: bold;
+      font-size: 24px;
+     margin-left: 42%;
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Leaderboard</h1>
+    <div id="Score">
+        <div class="box">
+            <p id="minBox">999</p>
+            <p>MIN</p>
+        </div>
+        <div class="box">
+            <p id="maxBox">00</p>
+            <p>MAX</p>
+        </div>
+      </div>
+      <div class="inpbox">
+        <input id="scoreBox" type="text" placeholder="Score">
+      </div>
+    <div id="btn">
+        <div>
+            <button id="color1" class="number-button" >1</button>
+      <button id=orange class="number-button">2</button>
+      <button id="color1" class="number-button">3</button>
+        </div>
+      <div>
+        <button id=orange  class="number-button">4</button>
+      <button id=orange  class="number-button">5</button>
+      <button id=orange class="number-button">6</button>
+      </div>
+      <div>
+        <button id="color1" class="number-button">7</button>
+      <button id=orange  class="number-button">8</button>
+      <button id="color1" class="number-button">9</button>
+      </div>
+      <div>
+        <button id="pink" class="number-button">0</button>
+      </div>
+    </div>
+    <button id="enterButton">ENTER</button>
+  </div>
+</div>
+<!-- <script src="./leader_board.js"></script> -->
+</body>
+
+<script>
+    const scoreBox = document.getElementById("scoreBox");
+    const minBox = document.getElementById("minBox");
+    const maxBox = document.getElementById("maxBox");
+    const enterButton = document.getElementById("enterButton");
+    const numberButtons = document.querySelectorAll(".number-button");
+    let currentScore = "";
+    numberButtons.forEach(button => {
+    button.addEventListener("click", () => {
+    currentScore += button.textContent;
+    scoreBox.value = currentScore;
+  });
+});
+enterButton.addEventListener("click", () => {
+  const score = parseInt(currentScore, 10);
+  if (!isNaN(score)) {
+    if (score < parseInt(minBox.textContent, 10)) {
+      minBox.textContent = score;
+    }
+    if (score > parseInt(maxBox.textContent, 10)) {
+      maxBox.textContent = score;
+    }
+    scoreBox.value = "";
+    currentScore = "";
+  }
+});
+
+
+</script>
